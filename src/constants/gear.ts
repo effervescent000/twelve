@@ -1,4 +1,4 @@
-import type { Weapon, WeaponDefault } from '../interfaces/gear';
+import type { Armor, ArmorDefault, Weapon, WeaponDefault } from '../interfaces/gear';
 
 import { JOBS } from './jobs';
 
@@ -76,5 +76,59 @@ export const WEAPONS: Record<string, Weapon> = {
 	vega: {
 		type: WEAPON_TYPES.gun.key,
 		attack: 13
+	}
+};
+
+export const ARMOR_DEFAULTS: Record<string, ArmorDefault> = {
+	light: {
+		key: 'light',
+		jobs: [JOBS.archer, JOBS.machinist, JOBS.monk, JOBS.shikari]
+	},
+	heavy: {
+		key: 'heavy',
+		jobs: [JOBS.timeMage, JOBS.uhlan, JOBS.foebreaker, JOBS.knight]
+	},
+	mystic: {
+		key: 'mystic',
+		jobs: [JOBS.blackMage, JOBS.bushi, JOBS.redMage, JOBS.whiteMage]
+	}
+};
+
+export const HEADGEAR: Record<string, Armor> = {
+	headgear: {
+		type: ARMOR_DEFAULTS.light.key,
+		magickResist: 5,
+		hp: 20
+	},
+	sallet: {
+		type: ARMOR_DEFAULTS.heavy.key,
+		magickResist: 7,
+		strength: 3
+	},
+	pointyHat: {
+		type: ARMOR_DEFAULTS.mystic.key,
+		magickResist: 6,
+		mp: 16,
+		magick: 2
+	}
+};
+
+export const BODY_ARMOR: Record<string, Armor> = {
+	leatherBreastplate: {
+		type: ARMOR_DEFAULTS.light.key,
+		defense: 6,
+		hp: 30
+	},
+	scaleArmor: {
+		type: ARMOR_DEFAULTS.heavy.key,
+		defense: 9,
+		strength: 3,
+		speed: 3
+	},
+	silkenShirt: {
+		type: ARMOR_DEFAULTS.mystic.key,
+		defense: 6,
+		mp: 8,
+		magick: 2
 	}
 };

@@ -18,3 +18,21 @@ export interface Weapon {
 	mp?: number;
 	critRate?: number;
 }
+
+export interface ArmorDefault {
+	key: string;
+	jobs: string[];
+}
+
+export interface Armor {
+	type: string;
+	defense?: number;
+	magickResist?: number;
+	hp?: number;
+	mp?: number;
+	strength?: number;
+	magick?: number;
+	vitality?: number;
+	speed?: number;
+	jobs?: string[];
+}
