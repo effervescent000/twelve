@@ -3,7 +3,7 @@
 	export let options: { label: string; value: string | number }[];
 	export let label = '';
 	export let callback = (_event: any) => {};
-	export let value: string | number;
+	export let value: string | number | undefined;
 
 	// STATE
 

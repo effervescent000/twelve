@@ -33,9 +33,14 @@
 			options={levelsOptions}
 			label="Level"
 			callback={(event) => characterStore.updateLevel(character, event.target.value)}
-			value={$characterStore[character].level}
+			value={characterData.level}
 		/>
 		<span>{Math.round(characterStats.hp)} HP / {Math.round(characterStats.mp)} MP</span>
-		<Select options={weapons} label="Weapon" callback={() => {}} />
+		<Select
+			options={weapons}
+			label="Weapon"
+			callback={(event) => characterStore.updateWeapon(character, event.target.value)}
+			value={characterData.weapon}
+		/>
 	</div>
 </div>
