@@ -9,7 +9,7 @@
 	// LOGIC
 </script>
 
-{#each JOBS as job}
+{#each Object.values(JOBS) as job}
 	<div>
 		<button on:click={() => callback(job)}>{job}</button>
 	</div>
