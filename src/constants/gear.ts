@@ -1,7 +1,8 @@
 import type { Weapon, WeaponDefault } from '../interfaces/gear';
+
 import { JOBS } from './jobs';
 
-const WEAPON_TYPES: Record<string, WeaponDefault> = {
+export const WEAPON_TYPES: Record<string, WeaponDefault> = {
 	sword: { key: 'sword', ct: 32, comboRate: 5, jobs: [JOBS.knight] },
 	dagger: { key: 'dagger', ct: 21, comboRate: 12, jobs: [JOBS.shikari] },
 	axe: { key: 'axe', ct: 29, comboRate: 6, jobs: [JOBS.foebreaker] },
@@ -14,7 +15,7 @@ const WEAPON_TYPES: Record<string, WeaponDefault> = {
 	rod: { key: 'rod', ct: 33, comboRate: 0, jobs: [JOBS.whiteMage], magick: 2 },
 	staff: { key: 'staff', ct: 34, comboRate: 0, jobs: [JOBS.blackMage] },
 	bow: { key: 'bow', ct: 36, critRate: 5, jobs: [JOBS.archer] },
-	crossBow: { key: 'cross bow', ct: 24, critRate: 7, jobs: [JOBS.timeMage] },
+	crossBow: { key: 'crossBow', ct: 24, critRate: 7, jobs: [JOBS.timeMage] },
 	gun: { key: 'gun', ct: 50, critRate: 5, jobs: [JOBS.machinist] }
 };
 
@@ -65,7 +66,7 @@ export const WEAPONS: Record<string, Weapon> = {
 		magick: 4
 	},
 	aevisKiller: {
-		type: WEAPON_TYPES.BOW.key,
+		type: WEAPON_TYPES.bow.key,
 		attack: 25
 	},
 	paraminaCrossbow: {
