@@ -3,6 +3,10 @@ export interface Character {
 	job2: string;
 	licenses: string[];
 	level: number;
+	weapon?: string;
+	offHand?: string;
+	head?: string;
+	body?: string;
 }
 
 export interface StatGrowthChart extends Record<string, number[]> {

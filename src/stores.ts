@@ -28,8 +28,23 @@ const makeCharacterStore = () => {
 		});
 	const updateLevel = (char: string, level: number) =>
 		update((old) => ({ ...old, [char]: { ...old[char], level } }));
+	const updateWeapon = (char: string, weapon: string) =>
+		update((old) => ({ ...old, [char]: { ...old[char], weapon } }));
+	const updateHead = (char: string, head: string) =>
+		update((old) => ({ ...old, [char]: { ...old[char], head } }));
+	const updateBody = (char: string, body: string) =>
+		update((old) => ({ ...old, [char]: { ...old[char], body } }));
 
-	return { subscribe, updateJob1, updateJob2, toggleLicense, updateLevel };
+	return {
+		subscribe,
+		updateJob1,
+		updateJob2,
+		toggleLicense,
+		updateLevel,
+		updateWeapon,
+		updateHead,
+		updateBody
+	};
 };
 
 export const characterStore = makeCharacterStore();

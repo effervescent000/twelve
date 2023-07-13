@@ -1,14 +1,14 @@
-export const JOBS = [
-	'white mage',
-	'uhlan',
-	'machinist',
-	'red battlemage',
-	'knight',
-	'monk',
-	'time battlemage',
-	'foebreaker',
-	'archer',
-	'black mage',
-	'bushi',
-	'shikari'
-];
+export const JOBS = {
+	whiteMage: 'white mage',
+	uhlan: 'uhlan',
+	machinist: 'machinist',
+	redMage: 'red battlemage',
+	knight: 'knight',
+	monk: 'monk',
+	timeMage: 'time battlemage',
+	foebreaker: 'foebreaker',
+	archer: 'archer',
+	blackMage: 'black mage',
+	bushi: 'bushi',
+	shikari: 'shikari'
+};
