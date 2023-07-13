@@ -3,7 +3,7 @@
 	import { characterStore, statsStore } from '../stores';
 
 	import { levelsOptions } from '../constants/characters';
-	import { WEAPONS, WEAPON_TYPES } from '../constants/gear';
+	import { ARMOR_DEFAULTS, BODY_ARMOR, HEADGEAR, WEAPONS, WEAPON_TYPES } from '../constants/gear';
 
 	import Select from './common/controlled-select.svelte';
 
@@ -20,6 +20,21 @@
 		.filter(([_key, { jobs, type }]) =>
 			[characterData.job1, characterData.job2].some((job) =>
 				(jobs || WEAPON_TYPES[type].jobs).includes(job)
+			)
+		)
+		.map(([key, _value]) => ({ label: key, value: key }));
+
+	$: head = Object.entries(HEADGEAR)
+		.filter(([_key, { jobs, type }]) =>
+			[characterData.job1, characterData.job2].some((job) =>
+				(jobs || ARMOR_DEFAULTS[type].jobs).includes(job)
+			)
+		)
+		.map(([key, _value]) => ({ label: key, value: key }));
+	$: body = Object.entries(BODY_ARMOR)
+		.filter(([_key, { jobs, type }]) =>
+			[characterData.job1, characterData.job2].some((job) =>
+				(jobs || ARMOR_DEFAULTS[type].jobs).includes(job)
 			)
 		)
 		.map(([key, _value]) => ({ label: key, value: key }));
@@ -41,6 +56,18 @@
 			label="Weapon"
 			callback={(event) => characterStore.updateWeapon(character, event.target.value)}
 			value={characterData.weapon}
+		/>
+		<Select
+			options={head}
+			label="Headgear"
+			callback={(event) => characterStore.updateHead(character, event.target.value)}
+			value={characterData.head}
+		/>
+		<Select
+			options={body}
+			label="Body armor"
+			callback={(event) => characterStore.updateBody(character, event.target.value)}
+			value={characterData.body}
 		/>
 	</div>
 </div>
