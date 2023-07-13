@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+
 	// PROPS
 
 	// STATE
 
 	// LOGIC
 </script>
-
-<div>Choose a character to get started.</div>
