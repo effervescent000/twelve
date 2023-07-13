@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { characterStore } from '../stores';
+	import { characterStore, statsStore } from '../stores';
 
 	import { levelsOptions } from '../constants/characters';
 
@@ -12,6 +12,7 @@
 
 	// LOGIC
 	$: characterData = $characterStore[character];
+	$: characterStats = $statsStore[character];
 </script>
 
 <div>
@@ -24,6 +25,6 @@
 			callback={(event) => characterStore.updateLevel(character, event.target.value)}
 			value={$characterStore[character].level}
 		/>
-		<!-- character health and mana go here -->
+		{Math.round(characterStats.hp)} HP / {Math.round(characterStats.mp)} MP
 	</div>
 </div>
