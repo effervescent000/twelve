@@ -4,13 +4,14 @@
 	import { levelsOptions } from '../constants/characters';
 
 	import Select from './common/controlled-select.svelte';
+	import { page } from '$app/stores';
 
 	// PROPS
-	export let character: string;
 
 	// STATE
 
 	// LOGIC
+	$: character = $page.params.character;
 	$: characterData = $characterStore[character];
 	$: characterStats = $statsStore[character];
 </script>
