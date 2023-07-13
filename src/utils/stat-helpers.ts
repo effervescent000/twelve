@@ -1,3 +1,4 @@
+import { BODY_ARMOR, HEADGEAR } from '../constants/gear';
 import type { Character, StatGrowthChart } from '../interfaces/characters';
 
 export const deriveStats = (
@@ -9,6 +10,12 @@ export const deriveStats = (
 	const statLowerBound = statGrowth[statKey][statIndex];
 	const statModulo = characterData.level % 10;
 	const statDiff = statGrowth[statKey][statIndex + 1] - statLowerBound;
-	const stat = statLowerBound + statDiff * (statModulo / 10);
-	return stat;
+	const baseStat = statLowerBound + statDiff * (statModulo / 10);
+
+	let modifiedStat = baseStat;
+
+	if (characterData.head) modifiedStat += HEADGEAR[characterData.head].hp || 0;
+	if (characterData.body) modifiedStat += BODY_ARMOR[characterData.body].hp || 0;
+
+	return modifiedStat;
 };
