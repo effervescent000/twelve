@@ -1,5 +1,6 @@
-import { BODY_ARMOR, HEADGEAR } from '../constants/gear';
 import type { Character, StatGrowthChart } from '../interfaces/characters';
+
+import { BODY_ARMOR, HEADGEAR } from '../constants/gear';
 
 export const deriveStats = (
 	characterData: Character,
