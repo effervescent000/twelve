@@ -5,7 +5,7 @@ import type { Character } from './interfaces/characters';
 const makeCharacterStore = () => {
 	const { subscribe, update } = writable<Record<string, Character>>(
 		CHARACTERS.reduce(
-			(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [] } }),
+			(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [], level: 1 } }),
 			{}
 		)
 	);
@@ -25,8 +25,10 @@ const makeCharacterStore = () => {
 				};
 			}
 		});
+	const updateLevel = (char: string, level: number) =>
+		update((old) => ({ ...old, [char]: { ...old[char], level } }));
 
-	return { subscribe, updateJob1, updateJob2, toggleLicense };
+	return { subscribe, updateJob1, updateJob2, toggleLicense, updateLevel };
 };
 
 export const characterStore = makeCharacterStore();
