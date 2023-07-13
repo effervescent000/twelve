@@ -1,14 +1,16 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { characterStore } from '../../stores';
 
-	// PROPS
-	export let character: string;
-
 	import JobList from './job-list.svelte';
+
+	// PROPS
 
 	// STATE
 
 	// LOGIC
+	$: character = $page.params.character;
+
 	const job1Callback = (job: string) => characterStore.updateJob1(character, job);
 	const job2Callback = (job: string) => characterStore.updateJob2(character, job);
 </script>

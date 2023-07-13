@@ -1,11 +1,12 @@
-import { writable } from 'svelte/store';
-import { CHARACTERS } from './constants/characters';
-import type { Character } from './interfaces/characters';
+import { derived, writable } from 'svelte/store';
+import { CHARACTERS, STATS } from './constants/characters';
+import type { Character, CharacterStats } from './interfaces/characters';
+import { deriveStats } from './utils/stat-helpers';
 
 const makeCharacterStore = () => {
 	const { subscribe, update } = writable<Record<string, Character>>(
 		CHARACTERS.reduce(
-			(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [] } }),
+			(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [], level: '1' } }),
 			{}
 		)
 	);
@@ -25,8 +26,25 @@ const makeCharacterStore = () => {
 				};
 			}
 		});
+	const updateLevel = (char: string, level: number) =>
+		update((old) => ({ ...old, [char]: { ...old[char], level } }));
 
-	return { subscribe, updateJob1, updateJob2, toggleLicense };
+	return { subscribe, updateJob1, updateJob2, toggleLicense, updateLevel };
 };
 
 export const characterStore = makeCharacterStore();
+
+export const statsStore = derived(characterStore, ($characterStore) => {
+	const stats: Record<string, CharacterStats> = {};
+	Object.entries($characterStore).forEach(([character, characterData]) => {
+		stats[character] = {
+			hp: deriveStats(characterData, STATS[character], 'hp'),
+			mp: deriveStats(characterData, STATS[character], 'mp'),
+			strength: deriveStats(characterData, STATS[character], 'strength'),
+			magick: deriveStats(characterData, STATS[character], 'magick'),
+			vitality: deriveStats(characterData, STATS[character], 'vitality'),
+			speed: deriveStats(characterData, STATS[character], 'speed')
+		};
+	});
+	return stats;
+});

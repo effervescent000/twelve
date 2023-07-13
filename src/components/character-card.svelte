@@ -9,5 +9,5 @@
 </script>
 
 <span>
-	{name}
+	<a href={`/${name}`}>{name}</a>
 </span>

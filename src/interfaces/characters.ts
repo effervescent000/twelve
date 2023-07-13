@@ -2,4 +2,23 @@ export interface Character {
 	job1: string;
 	job2: string;
 	licenses: string[];
+	level: number;
+}
+
+export interface StatGrowthChart extends Record<string, number[]> {
+	hp: number[];
+	mp: number[];
+	strength: number[];
+	magick: number[];
+	vitality: number[];
+	speed: number[];
+}
+
+export interface CharacterStats {
+	hp: number;
+	mp: number;
+	strength: number;
+	magick: number;
+	vitality: number;
+	speed: number;
 }

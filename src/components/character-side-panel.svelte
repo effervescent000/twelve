@@ -1,20 +1,31 @@
 <script lang="ts">
-	import { characterStore } from '../stores';
+	import { characterStore, statsStore } from '../stores';
+
+	import { levelsOptions } from '../constants/characters';
+
+	import Select from './common/controlled-select.svelte';
+	import { page } from '$app/stores';
 
 	// PROPS
-	export let character: string;
 
 	// STATE
 
 	// LOGIC
+	$: character = $page.params.character;
 	$: characterData = $characterStore[character];
+	$: characterStats = $statsStore[character];
 </script>
 
 <div>
 	<div>
 		{character}
 		{characterData.job1} / {characterData.job2}
-		<!-- level select goes here -->
-		<!-- character health and mana go here -->
+		<Select
+			options={levelsOptions}
+			label="Level"
+			callback={(event) => characterStore.updateLevel(character, event.target.value)}
+			value={$characterStore[character].level}
+		/>
+		{Math.round(characterStats.hp)} HP / {Math.round(characterStats.mp)} MP
 	</div>
 </div>
