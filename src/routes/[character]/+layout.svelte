@@ -8,10 +8,9 @@
 	// STATE
 
 	// LOGIC
-	const { character } = $page.params;
 </script>
 
 <div class="flex">
 	<slot />
-	<CharacterSidePanel {character} />
+	<CharacterSidePanel />
 </div>

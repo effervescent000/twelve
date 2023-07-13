@@ -7,7 +7,6 @@
 	// STATE
 
 	// LOGIC
-	const { character } = $page.params;
 </script>
 
-<JobSelection {character} />
+<JobSelection />
