@@ -1,18 +1,19 @@
 <script lang="ts">
 	import '../app.css';
 
-	import CharacterCard from '../components/characters/character-card.svelte';
+	import { CHARACTERS } from '../constants/characters';
+
+	import CharacterCard from '../components/character-card.svelte';
 
 	// PROPS
 
 	// STATE
 
 	// LOGIC
-	const characters = ['vaan', 'balthier', 'fran', 'basch', 'ashe', 'penelo'];
 </script>
 
 <div class="flex gap-5">
-	{#each characters as char}
+	{#each CHARACTERS as char}
 		<CharacterCard name={char} />
 	{/each}
 </div>
