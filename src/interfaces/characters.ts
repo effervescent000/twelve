@@ -5,11 +5,20 @@ export interface Character {
 	level: number;
 }
 
-export interface Stats {
+export interface StatGrowthChart extends Record<string, number[]> {
 	hp: number[];
 	mp: number[];
 	strength: number[];
 	magick: number[];
 	vitality: number[];
 	speed: number[];
+}
+
+export interface CharacterStats {
+	hp: number;
+	mp: number;
+	strength: number;
+	magick: number;
+	vitality: number;
+	speed: number;
 }

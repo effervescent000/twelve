@@ -1,9 +1,11 @@
+import type { StatGrowthChart } from '../interfaces/characters';
+
 export const CHARACTERS = ['vaan', 'balthier', 'fran', 'basch', 'ashe', 'penelo'];
 
 const levels = Array.from({ length: 99 }, (x, i) => `${i + 1}`);
 export const levelsOptions = levels.map((level) => ({ label: level, value: level }));
 
-export const STATS = {
+export const STATS: Record<string, StatGrowthChart> = {
 	vaan: {
 		hp: [83, 297, 689, 1194, 1672, 2437, 3112, 3493, 3933, 4535, 5215],
 		mp: [32, 80, 153.5, 229.5, 323, 403, 476.5, 530, 584, 617, 629.5],
