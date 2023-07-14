@@ -6,6 +6,7 @@
 	import { ARMOR_DEFAULTS, BODY_ARMOR, HEADGEAR, WEAPONS, WEAPON_TYPES } from '../constants/gear';
 
 	import Select from './common/controlled-select.svelte';
+	import DamagePane from './damage-pane.svelte';
 
 	// PROPS
 
@@ -69,5 +70,6 @@
 			callback={(event) => characterStore.updateBody(character, event.target.value)}
 			value={characterData.body}
 		/>
+		<DamagePane />
 	</div>
 </div>
