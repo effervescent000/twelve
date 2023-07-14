@@ -13,6 +13,8 @@
 
 	// LOGIC
 	const targetDefense = 6;
+	const avgComboHits = 2.873;
+
 	$: character = $page.params.character;
 	$: characterData = $characterStore[character];
 	$: characterStats = $statsStore[character];
@@ -27,14 +29,19 @@
 				characterData,
 				targetDefense
 			});
+			const comboDamage = weaponData.comboRate
+				? damage * (avgComboHits - 1) * weaponData.comboRate
+				: 0;
+			const critDamage = weaponData.critRate ? damage * weaponData.critRate : 0;
 			const executionTime =
 				((WEAPONS[weapon].ct || WEAPON_TYPES[WEAPONS[weapon].type].ct) *
 					getSpeedMod(characterStats.speed) +
 					0.25) *
 					1 *
 					0.5 +
-				(weaponData.range === 'melee' ? 1.2 : 1.4);
-			attackDPS = damage / executionTime;
+				(weaponData.range === 'melee' ? 1.2 : 1.4) +
+				(weaponData.comboRate ? (avgComboHits - 1) * weaponData.comboRate * 0.5 : 0);
+			attackDPS = (damage + comboDamage + critDamage) / executionTime;
 		}
 	}
 
