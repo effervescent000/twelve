@@ -55,3 +55,26 @@ export const STATS: Record<string, StatGrowthChart> = {
 		speed: [23, 24, 25, 26, 28, 29, 30, 32, 33, 34, 36]
 	}
 };
+
+export const getSpeedMod = (speed: number) => {
+	const SPEED_BREAKPOINTS = [
+		[23, 0.13571],
+		[24, 0.13286],
+		[26, 0.13],
+		[29, 0.12714],
+		[32, 0.12429],
+		[36, 0.12143],
+		[41, 0.11857],
+		[47, 0.11571],
+		[57, 0.11286],
+		[73, 0.11],
+		[94, 0.10714]
+	];
+	let i = 0;
+	while (i < SPEED_BREAKPOINTS.length) {
+		if (SPEED_BREAKPOINTS[i][0] <= speed) return SPEED_BREAKPOINTS[i][1];
+		i++;
+	}
+	// return the lowest speed value if we fail to find a match
+	return 0.13571;
+};
