@@ -1,3 +1,5 @@
+import type { Character, CharacterStats } from './characters';
+
 export interface WeaponDefault {
 	key: string;
 	ct: number;
@@ -5,6 +7,17 @@ export interface WeaponDefault {
 	jobs: string[];
 	magick?: number;
 	critRate?: number;
+	damageFormula: ({
+		attackPower,
+		characterStats,
+		targetDefense,
+		characterData
+	}: {
+		attackPower: number;
+		characterStats: CharacterStats;
+		targetDefense: number;
+		characterData: Character;
+	}) => number;
 }
 
 export interface Weapon {
@@ -17,6 +30,17 @@ export interface Weapon {
 	magick?: number;
 	mp?: number;
 	critRate?: number;
+	damageFormula?: ({
+		attackPower,
+		characterStats,
+		targetDefense,
+		characterData
+	}: {
+		attackPower: number;
+		characterStats: CharacterStats;
+		targetDefense: number;
+		characterData: Character;
+	}) => number;
 }
 
 export interface ArmorDefault {
