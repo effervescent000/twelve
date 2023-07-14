@@ -20,21 +20,21 @@
 	$: {
 		const weapon = characterData.weapon;
 		if (weapon) {
-			const damageFormula =
-				WEAPONS[weapon].damageFormula || WEAPON_TYPES[WEAPONS[weapon].type].damageFormula;
-			attackDPS =
-				damageFormula({
-					attackPower: WEAPONS[weapon].attack,
-					characterStats,
-					characterData,
-					targetDefense
-				}) /
-				(((WEAPONS[weapon].ct || WEAPON_TYPES[WEAPONS[weapon].type].ct) *
+			const weaponData = { ...WEAPON_TYPES[WEAPONS[weapon].type], ...WEAPONS[weapon] };
+			const damage = weaponData.damageFormula({
+				attackPower: WEAPONS[weapon].attack,
+				characterStats,
+				characterData,
+				targetDefense
+			});
+			const executionTime =
+				((WEAPONS[weapon].ct || WEAPON_TYPES[WEAPONS[weapon].type].ct) *
 					getSpeedMod(characterStats.speed) +
 					0.25) *
 					1 *
 					0.5 +
-					1.2);
+				(weaponData.range === 'melee' ? 1.2 : 1.4);
+			attackDPS = damage / executionTime;
 		}
 	}
 

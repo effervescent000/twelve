@@ -7,6 +7,7 @@ export interface WeaponDefault {
 	jobs: string[];
 	magick?: number;
 	critRate?: number;
+	range: 'melee' | 'ranged';
 	damageFormula: ({
 		attackPower,
 		characterStats,

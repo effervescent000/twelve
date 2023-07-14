@@ -87,78 +87,125 @@ const maceFormula = ({
 	(attackPower * RANDOMNESS_MOD - targetDefense) *
 	(1 + (characterStats.magick * (+characterData.level + characterStats.magick)) / 256);
 
+const MELEE = 'melee';
+const RANGED = 'ranged';
+
 export const WEAPON_TYPES: Record<string, WeaponDefault> = {
 	sword: {
 		key: 'sword',
 		ct: 32,
 		comboRate: 5,
 		jobs: [JOBS.knight],
-		damageFormula: strengthFormula
+		damageFormula: strengthFormula,
+		range: MELEE
 	},
 	dagger: {
 		key: 'dagger',
 		ct: 21,
 		comboRate: 12,
 		jobs: [JOBS.shikari],
-		damageFormula: speedFormula
+		damageFormula: speedFormula,
+		range: MELEE
 	},
 	axe: {
 		key: 'axe',
 		ct: 29,
 		comboRate: 6,
 		jobs: [JOBS.foebreaker],
-		damageFormula: vitalityFormula
+		damageFormula: vitalityFormula,
+		range: MELEE
 	},
 	hammer: {
 		key: 'hammer',
 		ct: 32,
 		comboRate: 8,
 		jobs: [JOBS.foebreaker],
-		damageFormula: vitalityFormula
+		damageFormula: vitalityFormula,
+		range: MELEE
 	},
-	mace: { key: 'mace', ct: 30, comboRate: 5, jobs: [JOBS.redMage], damageFormula: maceFormula },
+	mace: {
+		key: 'mace',
+		ct: 30,
+		comboRate: 5,
+		jobs: [JOBS.redMage],
+		damageFormula: maceFormula,
+		range: MELEE
+	},
 	greatsword: {
 		key: 'greatsword',
 		ct: 35,
 		comboRate: 8,
 		jobs: [JOBS.knight],
-		damageFormula: strengthFormula
+		damageFormula: strengthFormula,
+		range: MELEE
 	},
 	katana: {
 		key: 'katana',
 		ct: 31,
 		comboRate: 20,
 		jobs: [JOBS.bushi],
-		damageFormula: magickFormula
+		damageFormula: magickFormula,
+		range: MELEE
 	},
-	spear: { key: 'spear', ct: 28, comboRate: 4, jobs: [JOBS.uhlan], damageFormula: strengthFormula },
+	spear: {
+		key: 'spear',
+		ct: 28,
+		comboRate: 4,
+		jobs: [JOBS.uhlan],
+		damageFormula: strengthFormula,
+		range: MELEE
+	},
 	// TECHNICALLY pole uses a different formula from the standard strength one but I don't feel like
 	// making this more complicated than it already is
-	pole: { key: 'pole', ct: 25, comboRate: 15, jobs: [JOBS.monk], damageFormula: strengthFormula },
+	pole: {
+		key: 'pole',
+		ct: 25,
+		comboRate: 15,
+		jobs: [JOBS.monk],
+		damageFormula: strengthFormula,
+		range: MELEE
+	},
 	rod: {
 		key: 'rod',
 		ct: 33,
 		comboRate: 0,
 		jobs: [JOBS.whiteMage],
 		magick: 2,
-		damageFormula: magickFormula
+		damageFormula: magickFormula,
+		range: MELEE
 	},
 	staff: {
 		key: 'staff',
 		ct: 34,
 		comboRate: 0,
 		jobs: [JOBS.blackMage],
-		damageFormula: magickFormula
+		damageFormula: magickFormula,
+		range: MELEE
 	},
-	bow: { key: 'bow', ct: 36, critRate: 5, jobs: [JOBS.archer], damageFormula: speedFormula },
+	bow: {
+		key: 'bow',
+		ct: 36,
+		critRate: 5,
+		jobs: [JOBS.archer],
+		damageFormula: speedFormula,
+		range: RANGED
+	},
 	crossBow: {
 		key: 'crossBow',
 		ct: 24,
 		critRate: 7,
 		jobs: [JOBS.timeMage],
-		damageFormula: strengthFormula
+		damageFormula: strengthFormula,
+		range: RANGED
 	},
-	gun: { key: 'gun', ct: 50, critRate: 5, jobs: [JOBS.machinist], damageFormula: gunFormula }
+	gun: {
+		key: 'gun',
+		ct: 50,
+		critRate: 5,
+		jobs: [JOBS.machinist],
+		damageFormula: gunFormula,
+		range: RANGED
+	}
 };
 
 export const WEAPONS: Record<string, Weapon> = {
