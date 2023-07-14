@@ -1,17 +1,7 @@
 import type { Character, CharacterStats } from '../interfaces/characters';
-import type { Spell, SpellSchool } from '../interfaces/spells';
-import { JOBS } from './jobs';
+import type { Spell } from '../interfaces/spells';
 
-// export const SPELL_SCHOOLS: Record<string, SpellSchool> = {
-// 	white: {
-// 		jobs: [JOBS.whiteMage],
-// 		key: 'white'
-// 	},
-// 	black: {
-// 		jobs: [JOBS.blackMage],
-// 		key: 'black'
-// 	}
-// };
+import { JOBS } from './jobs';
 
 const RANDOMNESS_MOD = 1.0625;
 
