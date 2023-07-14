@@ -30,6 +30,8 @@ const makeCharacterStore = () => {
 		update((old) => ({ ...old, [char]: { ...old[char], level } }));
 	const updateWeapon = (char: string, weapon: string) =>
 		update((old) => ({ ...old, [char]: { ...old[char], weapon } }));
+	const updateSpell = (char: string, spell: string) =>
+		update((old) => ({ ...old, [char]: { ...old[char], spell } }));
 	const updateHead = (char: string, head: string) =>
 		update((old) => ({ ...old, [char]: { ...old[char], head } }));
 	const updateBody = (char: string, body: string) =>
@@ -42,6 +44,7 @@ const makeCharacterStore = () => {
 		toggleLicense,
 		updateLevel,
 		updateWeapon,
+		updateSpell,
 		updateHead,
 		updateBody
 	};

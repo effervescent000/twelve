@@ -4,6 +4,7 @@ export interface Character {
 	licenses: string[];
 	level: number;
 	weapon?: string;
+	spell?: string;
 	offHand?: string;
 	head?: string;
 	body?: string;
