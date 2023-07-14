@@ -17,7 +17,7 @@ const strengthFormula = ({
 	characterData: Character;
 }) =>
 	(attackPower * RANDOMNESS_MOD - targetDefense) *
-	(1 + characterStats.strength * ((characterData.level + characterStats.strength) / 256));
+	((1 + characterStats.strength) * ((+characterData.level + characterStats.strength) / 256));
 
 const magickFormula = ({
 	attackPower,
@@ -31,7 +31,7 @@ const magickFormula = ({
 	characterData: Character;
 }) =>
 	(attackPower * RANDOMNESS_MOD - targetDefense) *
-	(1 + (characterStats.strength * (characterData.level + characterStats.magick)) / 256);
+	(1 + (characterStats.strength * (+characterData.level + characterStats.magick)) / 256);
 
 const vitalityFormula = ({
 	attackPower,
@@ -45,7 +45,7 @@ const vitalityFormula = ({
 	characterData: Character;
 }) =>
 	(attackPower * 0.55555 - targetDefense) *
-	(1 + (characterStats.strength * (characterData.level + characterStats.vitality)) / 128);
+	(1 + (characterStats.strength * (+characterData.level + characterStats.vitality)) / 128);
 
 const speedFormula = ({
 	attackPower,
@@ -59,7 +59,7 @@ const speedFormula = ({
 	characterData: Character;
 }) =>
 	(attackPower * RANDOMNESS_MOD - targetDefense) *
-	(1 + (characterStats.strength * (characterData.level + characterStats.speed)) / 218);
+	(1 + (characterStats.strength * (+characterData.level + characterStats.speed)) / 218);
 
 const gunFormula = ({
 	attackPower,
@@ -85,7 +85,7 @@ const maceFormula = ({
 	characterData: Character;
 }) =>
 	(attackPower * RANDOMNESS_MOD - targetDefense) *
-	(1 + (characterStats.magick * (characterData.level + characterStats.magick)) / 256);
+	(1 + (characterStats.magick * (+characterData.level + characterStats.magick)) / 256);
 
 export const WEAPON_TYPES: Record<string, WeaponDefault> = {
 	sword: {
