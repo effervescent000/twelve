@@ -7,6 +7,7 @@
 
 	import Select from './common/controlled-select.svelte';
 	import DamagePane from './damage-pane.svelte';
+	import { SPELLS } from '../constants/spells';
 
 	// PROPS
 
@@ -22,6 +23,12 @@
 			[characterData.job1, characterData.job2].some((job) =>
 				(jobs || WEAPON_TYPES[type].jobs).includes(job)
 			)
+		)
+		.map(([key, _value]) => ({ label: key, value: key }));
+
+	$: spells = Object.entries(SPELLS)
+		.filter(([_key, { jobs }]) =>
+			[characterData.job1, characterData.job2].some((job) => jobs.includes(job))
 		)
 		.map(([key, _value]) => ({ label: key, value: key }));
 
@@ -57,6 +64,12 @@
 			label="Weapon"
 			callback={(event) => characterStore.updateWeapon(character, event.target.value)}
 			value={characterData.weapon}
+		/>
+		<Select
+			options={spells}
+			label="Selected spell"
+			callback={(event) => characterStore.updateSpell(character, event.target.value)}
+			value={characterData.spell}
 		/>
 		<Select
 			options={head}
