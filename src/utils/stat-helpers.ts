@@ -5,7 +5,7 @@ import { BODY_ARMOR, HEADGEAR } from '../constants/gear';
 export const deriveStats = (
 	characterData: Character,
 	statGrowth: StatGrowthChart,
-	statKey: string
+	statKey: 'hp' | 'mp' | 'strength' | 'vitality' | 'speed' | 'magick'
 ) => {
 	const statIndex = Math.floor(characterData.level / 10);
 	const statLowerBound = statGrowth[statKey][statIndex];
@@ -15,8 +15,8 @@ export const deriveStats = (
 
 	let modifiedStat = baseStat;
 
-	if (characterData.head) modifiedStat += HEADGEAR[characterData.head].hp || 0;
-	if (characterData.body) modifiedStat += BODY_ARMOR[characterData.body].hp || 0;
+	if (characterData.head) modifiedStat += HEADGEAR[characterData.head][statKey] || 0;
+	if (characterData.body) modifiedStat += BODY_ARMOR[characterData.body][statKey] || 0;
 
 	return modifiedStat;
 };
