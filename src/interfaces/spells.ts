@@ -4,7 +4,7 @@ export interface SpellSchool {
 }
 
 export interface Spell {
-	// type: string;
 	jobs: string[];
 	power: number;
+	element?: string;
 }

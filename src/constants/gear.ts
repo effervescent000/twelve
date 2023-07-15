@@ -209,29 +209,54 @@ export const WEAPON_TYPES: Record<string, WeaponDefault> = {
 };
 
 export const WEAPONS: Record<string, Weapon> = {
+	aevisKiller: {
+		type: WEAPON_TYPES.bow.key,
+		attack: 25
+	},
 	ancientSword: {
 		type: WEAPON_TYPES.sword.key,
 		attack: 35
-	},
-	chopper: {
-		type: WEAPON_TYPES.dagger.key,
-		attack: 40
 	},
 	broadaxe: {
 		type: WEAPON_TYPES.axe.key,
 		attack: 36
 	},
-	sledgehammer: {
-		type: WEAPON_TYPES.hammer.key,
-		attack: 66
-	},
-	miter: {
+	bronzeMace: {
 		type: WEAPON_TYPES.mace.key,
-		attack: 42
+		attack: 24
+	},
+
+	chopper: {
+		type: WEAPON_TYPES.dagger.key,
+		attack: 40
 	},
 	claymore: {
 		type: WEAPON_TYPES.greatsword.key,
 		attack: 83
+	},
+	cypressPole: {
+		type: WEAPON_TYPES.pole.key,
+		attack: 22
+	},
+	gaiaRod: {
+		type: WEAPON_TYPES.rod.key,
+		attack: 43
+	},
+	ironHammer: {
+		type: WEAPON_TYPES.hammer.key,
+		attack: 24
+	},
+	ironPole: {
+		type: WEAPON_TYPES.pole.key,
+		attack: 46
+	},
+	mace: {
+		type: WEAPON_TYPES.mace.key,
+		attack: 17
+	},
+	miter: {
+		type: WEAPON_TYPES.mace.key,
+		attack: 42
 	},
 	osafune: {
 		type: WEAPON_TYPES.katana.key,
@@ -241,26 +266,22 @@ export const WEAPONS: Record<string, Weapon> = {
 		type: WEAPON_TYPES.spear.key,
 		attack: 34
 	},
-	ironPole: {
-		type: WEAPON_TYPES.pole.key,
-		attack: 46
+	paraminaCrossbow: {
+		type: WEAPON_TYPES.crossBow.key,
+		attack: 42
 	},
-	gaiaRod: {
-		type: WEAPON_TYPES.rod.key,
-		attack: 43
+	silverBow: {
+		type: WEAPON_TYPES.bow.key,
+		attack: 19
+	},
+	sledgehammer: {
+		type: WEAPON_TYPES.hammer.key,
+		attack: 66
 	},
 	stormStaff: {
 		type: WEAPON_TYPES.staff.key,
 		attack: 36,
 		magick: 4
-	},
-	aevisKiller: {
-		type: WEAPON_TYPES.bow.key,
-		attack: 25
-	},
-	paraminaCrossbow: {
-		type: WEAPON_TYPES.crossBow.key,
-		attack: 42
 	},
 	vega: {
 		type: WEAPON_TYPES.gun.key,
@@ -284,21 +305,33 @@ export const ARMOR_DEFAULTS: Record<string, ArmorDefault> = {
 };
 
 export const HEADGEAR: Record<string, Armor> = {
+	cottonCap: {
+		type: ARMOR_DEFAULTS.mystic.key,
+		magickResist: 4,
+		mp: 5,
+		magick: 2
+	},
+
 	headgear: {
 		type: ARMOR_DEFAULTS.light.key,
 		magickResist: 5,
 		hp: 20
 	},
-	sallet: {
-		type: ARMOR_DEFAULTS.heavy.key,
-		magickResist: 7,
-		strength: 3
+	headguard: {
+		type: ARMOR_DEFAULTS.light.key,
+		magickResist: 6,
+		hp: 30
 	},
 	pointyHat: {
 		type: ARMOR_DEFAULTS.mystic.key,
 		magickResist: 6,
 		mp: 16,
 		magick: 2
+	},
+	sallet: {
+		type: ARMOR_DEFAULTS.heavy.key,
+		magickResist: 7,
+		strength: 3
 	}
 };
 

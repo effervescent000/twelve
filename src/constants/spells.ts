@@ -19,14 +19,25 @@ export const spellDamageFormula = ({
 	(power * RANDOMNESS_MOD - targetDefense) *
 	(2 + (characterStats.magick * (+characterData.level + characterStats.magick)) / 256);
 
+const ELEMENTS = {
+	dark: 'dark',
+	fire: 'fire'
+};
+
 export const SPELLS: Record<string, Spell> = {
-	fira: {
-		power: 67,
-		// type: SPELL_SCHOOLS.black.key
-		jobs: [JOBS.blackMage, JOBS.redMage, JOBS.uhlan]
-	},
 	bio: {
 		power: 87,
 		jobs: [JOBS.blackMage]
+	},
+	dark: {
+		power: 46,
+		jobs: [JOBS.redMage],
+		element: ELEMENTS.dark
+	},
+	fira: {
+		power: 67,
+		// type: SPELL_SCHOOLS.black.key
+		jobs: [JOBS.blackMage, JOBS.redMage, JOBS.uhlan],
+		element: ELEMENTS.fire
 	}
 };
