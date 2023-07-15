@@ -42,19 +42,26 @@
 				(weaponData.range === 'melee' ? 1.2 : 1.4) +
 				(weaponData.comboRate ? (avgComboHits - 1) * weaponData.comboRate * 0.5 : 0);
 			attackDPS = (damage + comboDamage + critDamage) / executionTime;
+		} else {
+			attackDPS = 0;
 		}
 	}
 
 	$: {
 		const spell = characterData.spell;
+		// I am assuming that if you are using an elemental spell, the target is weak to it
 		if (spell) {
-			const damage = spellDamageFormula({
-				power: SPELLS[spell].power,
-				characterData,
-				characterStats,
-				targetDefense
-			});
+			const spellData = SPELLS[spell];
+			const damage =
+				spellDamageFormula({
+					power: spellData.power,
+					characterData,
+					characterStats,
+					targetDefense
+				}) * (spellData.element ? 1.5 : 1);
 			spellDPS = damage / ((23 * getSpeedMod(characterStats.speed) + 0.25) * 1 * 0.5 + 1.2);
+		} else {
+			spellDPS = 0;
 		}
 	}
 </script>
