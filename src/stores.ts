@@ -3,13 +3,21 @@ import { CHARACTERS, STATS } from './constants/characters';
 import type { Character, CharacterStats } from './interfaces/characters';
 import { deriveStats } from './utils/stat-helpers';
 
+const EMPTY_CHARACTER_STORE = CHARACTERS.reduce(
+	(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [], level: '1' } }),
+	{}
+);
+const isBrowser = typeof window !== 'undefined';
+
+const getCharacterData = () => {
+	if (isBrowser) {
+		return JSON.parse(localStorage.getItem('twelveData') || JSON.stringify(EMPTY_CHARACTER_STORE));
+	}
+	return EMPTY_CHARACTER_STORE;
+};
+
 const makeCharacterStore = () => {
-	const { subscribe, update } = writable<Record<string, Character>>(
-		CHARACTERS.reduce(
-			(acc, cur) => ({ ...acc, [cur]: { job1: null, job2: null, licenses: [], level: '1' } }),
-			{}
-		)
-	);
+	const { subscribe, update } = writable<Record<string, Character>>(getCharacterData());
 
 	const updateJob1 = (char: string, job: string) =>
 		update((old) => ({ ...old, [char]: { ...old[char], job1: job } }));
@@ -65,4 +73,10 @@ export const statsStore = derived(characterStore, ($characterStore) => {
 		};
 	});
 	return stats;
+});
+
+characterStore.subscribe((val) => {
+	if (isBrowser) {
+		localStorage.setItem('twelveData', JSON.stringify(val));
+	}
 });
