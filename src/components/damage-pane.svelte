@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { getSpeedMod } from '../constants/characters';
 	import { WEAPONS, WEAPON_TYPES } from '../constants/gear';
-	import { SPELLS, spellDamageFormula } from '../constants/spells';
+	import { SPELLS, SPELL_TYPES } from '../constants/spells';
 	import { characterStore, statsStore } from '../stores';
 
 	// PROPS
@@ -51,14 +51,14 @@
 		const spell = characterData.spell;
 		// I am assuming that if you are using an elemental spell, the target is weak to it
 		if (spell) {
-			const spellData = SPELLS[spell];
+			const spellData = { ...SPELL_TYPES[SPELLS[spell].type], ...SPELLS[spell] };
 			const damage =
-				spellDamageFormula({
+				spellData.formula({
 					power: spellData.power,
 					characterData,
 					characterStats,
 					targetDefense
-				}) * (spellData.element ? 1.5 : 1);
+				}) * (spellData.type === 'damage' && spellData.element ? 1.5 : 1);
 			spellDPS = damage / ((23 * getSpeedMod(characterStats.speed) + 0.25) * 1 * 0.5 + 1.2);
 		} else {
 			spellDPS = 0;

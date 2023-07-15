@@ -217,6 +217,10 @@ export const WEAPONS: Record<string, Weapon> = {
 		type: WEAPON_TYPES.sword.key,
 		attack: 35
 	},
+	battleBamboo: {
+		type: WEAPON_TYPES.pole.key,
+		attack: 34
+	},
 	broadaxe: {
 		type: WEAPON_TYPES.axe.key,
 		attack: 36
@@ -225,7 +229,6 @@ export const WEAPONS: Record<string, Weapon> = {
 		type: WEAPON_TYPES.mace.key,
 		attack: 24
 	},
-
 	chopper: {
 		type: WEAPON_TYPES.dagger.key,
 		attack: 40
@@ -269,6 +272,16 @@ export const WEAPONS: Record<string, Weapon> = {
 	paraminaCrossbow: {
 		type: WEAPON_TYPES.crossBow.key,
 		attack: 42
+	},
+	rod: {
+		type: WEAPON_TYPES.rod.key,
+		attack: 16,
+		magick: 2
+	},
+	serpentRod: {
+		type: WEAPON_TYPES.rod.key,
+		attack: 25,
+		magick: 2
 	},
 	silverBow: {
 		type: WEAPON_TYPES.bow.key,
@@ -336,6 +349,18 @@ export const HEADGEAR: Record<string, Armor> = {
 };
 
 export const BODY_ARMOR: Record<string, Armor> = {
+	bronzeChestplate: {
+		type: ARMOR_DEFAULTS.heavy.key,
+		defense: 8,
+		hp: 40
+	},
+	kilimweaveShirt: {
+		type: ARMOR_DEFAULTS.mystic.key,
+		defense: 8,
+		mp: 16,
+		magick: 3
+	},
+
 	leatherBreastplate: {
 		type: ARMOR_DEFAULTS.light.key,
 		defense: 6,
