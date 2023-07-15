@@ -12,9 +12,11 @@
 	// LOGIC
 </script>
 
-<div class="flex gap-5">
-	{#each CHARACTERS as char}
-		<CharacterCard name={char} />
-	{/each}
+<div class="m-4">
+	<div class="flex gap-5">
+		{#each CHARACTERS as char}
+			<CharacterCard name={char} />
+		{/each}
+	</div>
+	<slot />
 </div>
-<slot />

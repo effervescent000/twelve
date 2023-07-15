@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-
 	import CharacterSidePanel from '../../components/character-side-panel.svelte';
 
 	// PROPS
@@ -10,7 +8,7 @@
 	// LOGIC
 </script>
 
-<div class="flex">
+<div class="flex gap-5">
 	<slot />
 	<CharacterSidePanel />
 </div>

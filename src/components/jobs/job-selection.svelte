@@ -15,7 +15,7 @@
 	const job2Callback = (job: string) => characterStore.updateJob2(character, job);
 </script>
 
-<div class="flex">
+<div class="flex gap-4">
 	<div>
 		Job 1:
 		<JobList callback={job1Callback} />
