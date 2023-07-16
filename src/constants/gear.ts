@@ -221,6 +221,10 @@ export const WEAPONS: Record<string, Weapon> = {
 		type: WEAPON_TYPES.pole.key,
 		attack: 34
 	},
+	bhuj: {
+		type: WEAPON_TYPES.mace.key,
+		attack: 34
+	},
 	broadaxe: {
 		type: WEAPON_TYPES.axe.key,
 		attack: 36
@@ -299,6 +303,10 @@ export const WEAPONS: Record<string, Weapon> = {
 	vega: {
 		type: WEAPON_TYPES.gun.key,
 		attack: 13
+	},
+	warHammer: {
+		type: WEAPON_TYPES.hammer.key,
+		attack: 42
 	}
 };
 
@@ -318,13 +326,18 @@ export const ARMOR_DEFAULTS: Record<string, ArmorDefault> = {
 };
 
 export const HEADGEAR: Record<string, Armor> = {
+	balaclava: {
+		type: ARMOR_DEFAULTS.light.key,
+		magickResist: 12,
+		hp: 90,
+		strength: 1
+	},
 	cottonCap: {
 		type: ARMOR_DEFAULTS.mystic.key,
 		magickResist: 4,
 		mp: 5,
 		magick: 2
 	},
-
 	headgear: {
 		type: ARMOR_DEFAULTS.light.key,
 		magickResist: 5,
@@ -334,6 +347,13 @@ export const HEADGEAR: Record<string, Armor> = {
 		type: ARMOR_DEFAULTS.light.key,
 		magickResist: 6,
 		hp: 30
+	},
+	lambentHat: {
+		type: ARMOR_DEFAULTS.mystic.key,
+		magickResist: 15,
+		mp: 36,
+		magick: 4,
+		speed: 3
 	},
 	pointyHat: {
 		type: ARMOR_DEFAULTS.mystic.key,
@@ -350,9 +370,14 @@ export const HEADGEAR: Record<string, Armor> = {
 
 export const BODY_ARMOR: Record<string, Armor> = {
 	bronzeChestplate: {
-		type: ARMOR_DEFAULTS.heavy.key,
+		type: ARMOR_DEFAULTS.light.key,
 		defense: 8,
 		hp: 40
+	},
+	chainmail: {
+		type: ARMOR_DEFAULTS.heavy.key,
+		defense: 17,
+		strength: 3
 	},
 	kilimweaveShirt: {
 		type: ARMOR_DEFAULTS.mystic.key,
@@ -360,7 +385,6 @@ export const BODY_ARMOR: Record<string, Armor> = {
 		mp: 16,
 		magick: 3
 	},
-
 	leatherBreastplate: {
 		type: ARMOR_DEFAULTS.light.key,
 		defense: 6,

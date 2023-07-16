@@ -58,6 +58,12 @@ export const SPELL_TYPES: Record<string, SpellType> = {
 };
 
 export const SPELLS: Record<string, Spell> = {
+	aero: {
+		type: DAMAGE,
+		element: ELEMENTS.wind,
+		jobs: [JOBS.blackMage, JOBS.redMage],
+		power: 51
+	},
 	aqua: {
 		type: DAMAGE,
 		power: 37,
